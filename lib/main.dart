@@ -5,14 +5,7 @@ import 'custom_slider_widget.dart';
 import 'slider_provider.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => SliderProvider()),
-      ],
-      child: MyApp(),
-    ),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,23 +18,29 @@ class MyApp extends StatelessWidget {
 }
 
 class ConstructorScreen extends StatelessWidget {
-  const ConstructorScreen({Key? key}) : super(key: key);
+   ConstructorScreen({Key? key}) : super(key: key);
+
+
+  final SliderProvider _sliderProvider = SliderProvider();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Demo Home Page"),
-        backgroundColor: Colors.blue,
-      ),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomContainerWidget(),
-            SizedBox(height: 20),
-            CustomSliderWidget(),
-          ],
+    return  Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter Demo Home Page"),
+          backgroundColor: Colors.blue,
+        ),
+        body: SafeArea(
+          child: ChangeNotifierProvider.value(
+    value: _sliderProvider,
+    child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomContainerWidget(),
+              SizedBox(height: 20),
+              CustomSliderWidget(),
+            ],
+          ),
         ),
       ),
     );

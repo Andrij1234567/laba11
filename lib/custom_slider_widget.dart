@@ -31,7 +31,7 @@ class CustomSliderWidget extends StatelessWidget {
     );
   }
 
-  Widget buildSlider(String label, double value, ValueChanged<double> onChanged) {
+  Widget buildSlider(String label, double value, onChanged) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
